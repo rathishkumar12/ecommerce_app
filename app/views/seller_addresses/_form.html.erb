@@ -1,0 +1,42 @@
+<%= form_with(model: seller_address) do |form| %>
+  <% if seller_address.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(seller_address.errors.count, "error") %> prohibited this seller_address from being saved:</h2>
+
+      <ul>
+        <% seller_address.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :seller_id %>
+    <%= form.number_field :seller_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :street_name %>
+    <%= form.text_area :street_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lat %>
+    <%= form.text_field :lat %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lon %>
+    <%= form.text_field :lon %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pincode_id %>
+    <%= form.number_field :pincode_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

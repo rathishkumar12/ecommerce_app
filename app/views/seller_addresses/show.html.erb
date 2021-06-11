@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Seller:</strong>
+  <%= @seller_address.seller_id %>
+</p>
+
+<p>
+  <strong>Street name:</strong>
+  <%= @seller_address.street_name %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @seller_address.lat %>
+</p>
+
+<p>
+  <strong>Lon:</strong>
+  <%= @seller_address.lon %>
+</p>
+
+<p>
+  <strong>Pincode:</strong>
+  <%= @seller_address.pincode_id %>
+</p>
+
+<%= link_to 'Edit', edit_seller_address_path(@seller_address) %> |
+<%= link_to 'Back', seller_addresses_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  seller_name: MyString
+  seller_company_name: MyString
+  email: MyString
+  phone_number: 
+  password: MyString
+  is_active: false
+
+two:
+  seller_name: MyString
+  seller_company_name: MyString
+  email: MyString
+  phone_number: 
+  password: MyString
+  is_active: false

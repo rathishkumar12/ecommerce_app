@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Buyers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Buyer name</th>
+      <th>Email</th>
+      <th>Phone number</th>
+      <th>Password</th>
+      <th>Is active</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @buyers.each do |buyer| %>
+      <tr>
+        <td><%= buyer.buyer_name %></td>
+        <td><%= buyer.email %></td>
+        <td><%= buyer.phone_number %></td>
+        <td><%= buyer.password %></td>
+        <td><%= buyer.is_active %></td>
+        <td><%= link_to 'Show', buyer %></td>
+        <td><%= link_to 'Edit', edit_buyer_path(buyer) %></td>
+        <td><%= link_to 'Destroy', buyer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Buyer', new_buyer_path %>
