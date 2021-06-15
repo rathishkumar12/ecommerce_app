@@ -2,11 +2,12 @@
 
 <h1>Products</h1>
 
-<table>
+<table border="3" >
   <thead>
-    <tr>
+    <tr border="3">
       <th>Name</th>
       <th>Description</th>
+      <th>Category</th>
       <th>Image url</th>
       <th>Seller</th>
       <th>Price</th>
@@ -16,11 +17,12 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody border="3">
     <% @products.each do |product| %>
-      <tr>
+      <tr border="3">
         <td><%= product.name %></td>
         <td><%= product.description %></td>
+        <td><%= product.category_id %></td>
         <td><%= product.image_url %></td>
         <td><%= product.seller_id %></td>
         <td><%= product.price %></td>

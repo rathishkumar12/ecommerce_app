@@ -12,14 +12,25 @@
 
 <p>
   <strong>Image url:</strong>
-  <%= @product.image_url %>
+  <%= @product.image_url%>
 </p>
+
+<% (0...@product.image.count).each do |image| %>
+<%= image_tag(@product.image[image],style: 'height:300px;width:300px;') %>
+<% end %>
 
 <p>
   <strong>Seller:</strong>
   <%= @product.seller_id %>
 </p>
-
+<p>
+  <strong>Category:</strong>
+  <% if (!@product.category.nil?) %>
+  <%= @product.category.category_name  %>
+  <%else%>
+   <%= "No category"  %>
+  <% end %>
+</p>
 <p>
   <strong>Price:</strong>
   <%= @product.price %>
