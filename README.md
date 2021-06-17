@@ -1,3 +1,3 @@
 # README
 
-1.commit after creating association and tables
+1.commit after seller and buyer flow
