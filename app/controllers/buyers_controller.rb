@@ -5,6 +5,7 @@ class BuyersController < ApplicationController
   def index
     @buyers = Buyer.all
   end
+  
 
   # GET /buyers/1 or /buyers/1.json
   def show

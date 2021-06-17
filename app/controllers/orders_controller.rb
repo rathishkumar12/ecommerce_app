@@ -3,7 +3,11 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.where('seller_id='+params[:id])
+  end
+  def index1
+    @orders = Order.all 
+    render 'orders/index'
   end
 
   # GET /orders/1 or /orders/1.json
@@ -13,25 +17,46 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @address = BuyerAddress.find_by(id:params[:address_id])
+    $id_address=@address.id
+    $id_product=params[:product_id]
+    $id_seller=params[:seller_id]
   end
 
   # GET /orders/1/edit
   def edit
   end
 
+
+  def order_confirmation
+    @order_summary=Order.find(params[:order_id])
+  end
+  
+
+  def address_select
+    redirect_to  buyer_addresses_path
+  end
+
+   def address_selected
+    redirect_to  new_order_path
+  end
+
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: "Order was successfully created." }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+    @order_item =OrderItem.new 
+    puts  @order_item.id
+    puts "check"
+      if @order.save 
+         @order_item.order_id=@order.id
+         @order_item.product_id=$id_product
+         @order_item.quantity= $quantity
+         if @order_item.save
+        redirect_to order_confirmation_path(:order_id =>@order.id )
+         end
       end
-    end
+    
   end
 
   # PATCH/PUT /orders/1 or /orders/1.json
@@ -64,6 +89,17 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:buyer_id, :seller_id, :status)
+      res=params.require(:order).permit(:buyer_id,:status ,:type_of_payment_id ,:quantity)
+      res[:status]="Waiting for Seller Confirmation."
+      res[:buyer_address_id]=$id_address
+      if Product.find($id_product).price*res[:quantity].to_i < 500
+      res[:amount]=(Product.find($id_product).price*res[:quantity].to_i)+50
+       else
+      res[:amount]=(Product.find($id_product).price*res[:quantity].to_i)
+       end
+       $quantity=res[:quantity].to_i
+      res.delete("quantity")
+      res[:seller_id]=$id_seller
+      return res
     end
 end

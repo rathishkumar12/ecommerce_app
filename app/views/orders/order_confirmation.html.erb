@@ -1,0 +1,16 @@
+<h3><u>Order Summary</u></h3>
+<%@order_summary.order_item.each do |order_item| %>
+<h4>Product : <%= order_item.product.name %></h4>
+<h4>Price : <%= order_item.product.price %></h4>
+<h4>Quantity : <%= order_item.quantity %></h4>
+<% if order_item.product.price <500 %>
+<h4>+50 delivery charges</h4>
+<%else%>
+<h4>Free delivery</h4>
+<% end %>	
+<%end%>
+<h4>Total price : <%= @order_summary.amount %></h4>
+<%= link_to 'Home' , root_path %>
+
+
+

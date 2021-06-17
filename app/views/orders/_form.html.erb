@@ -15,16 +15,22 @@
     <%= form.label :buyer_id %>
     <%= form.number_field :buyer_id %>
   </div>
-
-  <div class="field">
-    <%= form.label :seller_id %>
-    <%= form.number_field :seller_id %>
+  <div>
+    <%= form.label :quantity %>
+    <%= form.number_field  :quantity%><br>
   </div>
+   <div>
+    <%=form.label :type_of_payment_id%>
+    <%= form.collection_select :type_of_payment_id , TypeOfPayment.order(:name), :id, :name %> <br><br>
+   </div> 
+    <div class="field">
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
+     <p>Address Line : <%= @address.street_name %> <p>
+     <p>City : <%= @address.pincode.city %> <p>
+     <p>Pincode : <%= @address.pincode.pincode %> <p> 
+    
+    </div>
+ 
 
   <div class="actions">
     <%= form.submit %>

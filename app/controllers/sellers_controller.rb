@@ -19,6 +19,12 @@ class SellersController < ApplicationController
   def edit
   end
 
+
+  def seller_console
+    @seller_for_console=params[:id]
+  end
+  
+
   # POST /sellers or /sellers.json
   def create
     @seller = Seller.new(seller_params)

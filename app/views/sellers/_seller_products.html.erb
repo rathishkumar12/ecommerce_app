@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Products</h1>
-
+<br><h3 class="text-center fw-bold">Products</h3>
+<br>
 <table class="table">
   <thead>
     <tr >
@@ -18,7 +16,7 @@
   </thead>
 
   <tbody>
-    <% @products.each do |product| %>
+    <% obj.each do |product| %>
       <tr scope="row" >
         <td><%= product.name %></td>
         <td><%= product.description %></td>
@@ -38,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Product', new_product_path %>
+<%= link_to 'New Product', new_product_path(:seller_id =>params[:id]) %>

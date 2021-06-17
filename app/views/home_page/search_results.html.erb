@@ -1,0 +1,5 @@
+
+<%= render 'home_page/navigation_bar' %>  <br>
+<h4 class = 'fw-bold text-center' style="color: darkgrey;">Showing results for "<%= @search_keyword%>"</h4>
+<%= render 'home_page/display_allproducts' ,obj: @search_products %>
+<%= render 'home_page/footer' %>

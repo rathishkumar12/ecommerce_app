@@ -1,25 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <h3 class="navbar-brand" style="margin-left: 20px;"> E-Commerce</h2>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
- 
-  <div class="collapse navbar-collapse" id="navbarText">
-    <form class="d-flex" style="width:1000px;margin-left: 40px;margin-right: 50px;">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-  </form>
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item" style="margin-left: 10px;font-size: 15px;text-decoration: underline;">
-        <a class="nav-link bg-light" href="#" style="color:black;">Log In </a>
-      </li>
-      <li class="nav-item" style="margin-left: 10px;font-size: 15px;text-decoration: underline;">
-        <a class="nav-link bg-light" href="home_page/index" style="color:black;">Sign Up</a>
-      </li>
-      <li class="nav-item" style="margin-left: 10px;font-size: 15px;text-decoration: underline;">
-        <a class="nav-link bg-light" href="#" style="color:black;">Orders</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<%= render 'home_page/navigation_bar' %>  
+<%= render 'home_page/display_allproducts' ,obj: Product %>
+<%= render 'home_page/footer' %>

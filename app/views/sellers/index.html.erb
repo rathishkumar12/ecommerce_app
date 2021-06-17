@@ -2,9 +2,9 @@
 
 <h1>Sellers</h1>
 
-<table>
+<table class="table">
   <thead>
-    <tr>
+    <tr  >
       <th>Seller name</th>
       <th>Seller company name</th>
       <th>Email</th>
@@ -15,18 +15,17 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody >
     <% @sellers.each do |seller| %>
-      <tr>
+      <tr scope="row">
         <td><%= seller.seller_name %></td>
         <td><%= seller.seller_company_name %></td>
         <td><%= seller.email %></td>
         <td><%= seller.phone_number %></td>
         <td><%= seller.password %></td>
         <td><%= seller.is_active %></td>
-        <td><%= link_to 'Show', seller %></td>
-        <td><%= link_to 'Edit', edit_seller_path(seller) %></td>
-        <td><%= link_to 'Destroy', seller, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', sellers_path(seller.id) %></td>
+        
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +33,4 @@
 
 <br>
 
-<%= link_to 'New Seller', new_seller_path %>
+

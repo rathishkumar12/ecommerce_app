@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Buyer Addresses</h1>
+<h1>Saved Addresses</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
+      <th>Index</th>
       <th>Buyer</th>
       <th>Street name</th>
       <th>Lat</th>
@@ -16,15 +17,16 @@
 
   <tbody>
     <% @buyer_addresses.each do |buyer_address| %>
-      <tr>
+      <tr  scope="row">
+         <td><%= buyer_address.id %></td>
         <td><%= buyer_address.buyer_id %></td>
         <td><%= buyer_address.street_name %></td>
         <td><%= buyer_address.lat %></td>
         <td><%= buyer_address.lon %></td>
-        <td><%= buyer_address.pincode_id %></td>
-        <td><%= link_to 'Show', buyer_address %></td>
+        <td><%= buyer_address.pincode.pincode %></td>
         <td><%= link_to 'Edit', edit_buyer_address_path(buyer_address) %></td>
-        <td><%= link_to 'Destroy', buyer_address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', buyer_address ,method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=   link_to 'Select', new_order_path(:product_id=>params[:product_id],:address_id => buyer_address.id ,:seller_id=>params[:seller_id]) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -14,3 +14,51 @@
  *= require_tree .
  *= require_self
  */
+ nav{
+   position: fixed;
+  top: 0;
+  width: 100%;
+  padding-top: 60px;
+ }
+ #sticky-footer {
+    position: fixed;
+    height: 70px;
+    bottom: 0;
+    width: 100%;
+}
+
+ .column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 33.33%;
+  padding: 5px;
+}
+@media screen and (max-width: 500px) {
+  .column {
+    width: 100%;
+  }
+}
+
+div.card{
+   
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+div.card:hover{
+    transform: scale(1.00);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}

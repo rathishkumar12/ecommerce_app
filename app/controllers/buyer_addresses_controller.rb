@@ -8,6 +8,7 @@ class BuyerAddressesController < ApplicationController
 
   # GET /buyer_addresses/1 or /buyer_addresses/1.json
   def show
+
   end
 
   # GET /buyer_addresses/new
@@ -21,22 +22,20 @@ class BuyerAddressesController < ApplicationController
 
   # POST /buyer_addresses or /buyer_addresses.json
   def create
-    @buyer_address = BuyerAddress.new(buyer_address_params)
 
-    respond_to do |format|
+    @buyer_address = BuyerAddress.new(buyer_address_params)
       if @buyer_address.save
-        format.html { redirect_to @buyer_address, notice: "Buyer address was successfully created." }
-        format.json { render :show, status: :created, location: @buyer_address }
+           redirect_back fallback_location: :back
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @buyer_address.errors, status: :unprocessable_entity }
+        
       end
-    end
+    
   end
 
   # PATCH/PUT /buyer_addresses/1 or /buyer_addresses/1.json
   def update
     respond_to do |format|
+
       if @buyer_address.update(buyer_address_params)
         format.html { redirect_to @buyer_address, notice: "Buyer address was successfully updated." }
         format.json { render :show, status: :ok, location: @buyer_address }
@@ -49,7 +48,9 @@ class BuyerAddressesController < ApplicationController
 
   # DELETE /buyer_addresses/1 or /buyer_addresses/1.json
   def destroy
+    
     @buyer_address.destroy
+
     respond_to do |format|
       format.html { redirect_to buyer_addresses_url, notice: "Buyer address was successfully destroyed." }
       format.json { head :no_content }
@@ -64,6 +65,20 @@ class BuyerAddressesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def buyer_address_params
-      params.require(:buyer_address).permit(:buyer_id, :street_name, :lat, :lon, :pincode_id)
+      res=params.require(:buyer_address).permit(:buyer_id, :street_name, :lat, :lon,:pincode )
+      return set_pincode(res)
     end
+    def set_pincode(res)
+        if Pincode.find_by(pincode: res[:pincode]).nil?
+          pincode=Pincode.new
+          pincode.pincode=res[:pincode]
+          pincode.save
+          res["pincode_id"]=pincode.id
+        else 
+           pincode=Pincode.find_by(pincode:res[:pincode])
+            res["pincode_id"]=pincode.id
+        end 
+         res.delete("pincode")
+         return res
+    end 
 end

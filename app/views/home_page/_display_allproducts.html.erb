@@ -1,0 +1,31 @@
+
+<% if obj.count ==0 %>
+  <h4 class = 'fw-bold text-center' style="color:darkgrey;">No Products Found !!!</h4>
+<%else%>
+<% obj.all.each do |product| %>
+  <div class="card col" style="margin:20px;">
+    <h4 class="text-center fw-bold" style="margin:20px;"><%= product.name  %></h4>
+   <div class="row" style="margin:10px;">
+   <% (0...product.image.count).each do |image| %>
+     <div class="column">
+     <%= image_tag(product.image[image] , class: 'card-img-top' , style: 'height:300px;width:300px; border: 1px solid #ddd;')  %>
+     </div>
+   <% end %>
+   </div>
+
+   <div class="card-body">
+
+    <h4 style="color: #9c0902;"><sup><span>&#8377</span></sup><%= product.price %></h4>
+
+     <h4  ><b>Description : </b><%= product.description %></h4>
+    <h4><b>Seller Name : </b><%= product.seller.seller_name %></h4>
+    <% if product.quantity>0 %>
+    <h4 class="fw-bold text-success">In Stock !!!<h4>
+    <%else%>
+    <h4 class="fw-bold text-danger">Opps No Stock !!!<h4>
+    <%end%>
+    <%=   link_to 'Buy ', buyer_addresses_path(:product_id => product.id,:seller_id=>product.seller_id) ,class:'btn btn-success btn-lg text-white' %>
+   </div> 
+ </div>
+ <%end%>
+ <%end%>

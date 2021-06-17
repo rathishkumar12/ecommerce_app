@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    $id_seller=params[:seller_id]
   end
 
   # GET /products/1/edit
@@ -66,7 +67,9 @@ class ProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
 
     def product_params
-      params.require(:product).permit(:name, :description, :category_id,:image_url, :seller_id, :price, :quantity, :is_active, image: [])
+     res= params.require(:product).permit(:name, :description, :category_id,:price, :quantity, :is_active, image: [])
+     res[:seller_id]=$id_seller
+     return res
     end
 
 end

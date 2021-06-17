@@ -1,15 +1,14 @@
-<p id="notice"><%= notice %></p>
 
+
+<p id="notice"><%= notice %></p>
 <p>
   <strong>Buyer:</strong>
   <%= @buyer_address.buyer_id %>
 </p>
-
 <p>
   <strong>Street name:</strong>
   <%= @buyer_address.street_name %>
 </p>
-
 <p>
   <strong>Lat:</strong>
   <%= @buyer_address.lat %>
@@ -26,4 +25,4 @@
 </p>
 
 <%= link_to 'Edit', edit_buyer_address_path(@buyer_address) %> |
-<%= link_to 'Back', buyer_addresses_path %>
+<%= link_to 'Back', url_for(:back) %>
