@@ -53,7 +53,11 @@ class OrdersController < ApplicationController
          @order_item.product_id=$id_product
          @order_item.quantity= $quantity
          if @order_item.save
-        redirect_to order_confirmation_path(:order_id =>@order.id )
+          product=Product.find(@order_item.product_id)
+          product.quantity-=$quantity
+          if product.save
+          redirect_to order_confirmation_path(:order_id =>@order.id )
+          end
          end
       end
     

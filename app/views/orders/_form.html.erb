@@ -17,7 +17,7 @@
   </div>
   <div>
     <%= form.label :quantity %>
-    <%= form.number_field  :quantity%><br>
+    <%= form.number_field  :quantity ,:max => Product.find(params[:product_id]).quantity ,:min =>1 %><br><br>
   </div>
    <div>
     <%=form.label :type_of_payment_id%>
@@ -33,6 +33,6 @@
  
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Place order' %>
   </div>
 <% end %>

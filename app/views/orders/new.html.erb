@@ -1,5 +1,7 @@
 <h1>New Order</h1>
 
+<%= render 'product_order_show' ,product: Product.find(params[:product_id]) %><br>
+
 <%= render 'form', order: @order %>
 
 <%= link_to 'Back', url_for(:back) %>

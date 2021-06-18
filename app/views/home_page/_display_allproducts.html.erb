@@ -21,10 +21,10 @@
     <h4><b>Seller Name : </b><%= product.seller.seller_name %></h4>
     <% if product.quantity>0 %>
     <h4 class="fw-bold text-success">In Stock !!!<h4>
+    <%=   link_to 'Buy ', buyer_addresses_path(:product_id => product.id,:seller_id=>product.seller_id) ,class:'btn btn-success btn-lg text-white' %>
     <%else%>
     <h4 class="fw-bold text-danger">Opps No Stock !!!<h4>
     <%end%>
-    <%=   link_to 'Buy ', buyer_addresses_path(:product_id => product.id,:seller_id=>product.seller_id) ,class:'btn btn-success btn-lg text-white' %>
    </div> 
  </div>
  <%end%>

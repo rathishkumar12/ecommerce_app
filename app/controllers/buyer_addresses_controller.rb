@@ -1,4 +1,5 @@
 class BuyerAddressesController < ApplicationController
+  
   before_action :set_buyer_address, only: %i[ show edit update destroy ]
 
   # GET /buyer_addresses or /buyer_addresses.json
