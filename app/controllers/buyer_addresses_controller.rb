@@ -4,7 +4,7 @@ class BuyerAddressesController < ApplicationController
 
   # GET /buyer_addresses or /buyer_addresses.json
   def index
-    @buyer_addresses = BuyerAddress.all
+    @buyer_addresses = BuyerAddress.where("buyer_id="+current_buyer.id.to_s)
   end
 
   # GET /buyer_addresses/1 or /buyer_addresses/1.json
@@ -66,7 +66,8 @@ class BuyerAddressesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def buyer_address_params
-      res=params.require(:buyer_address).permit(:buyer_id, :street_name, :lat, :lon,:pincode )
+      res=params.require(:buyer_address).permit(:street_name,:pincode )
+      res[:buyer_id]=current_buyer.id
       return set_pincode(res)
     end
     def set_pincode(res)

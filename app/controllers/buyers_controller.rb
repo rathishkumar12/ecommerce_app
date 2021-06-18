@@ -60,7 +60,7 @@ class BuyersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_buyer
-      @buyer = Buyer.find(params[:id])
+      @buyer = Buyer.find(current_buyer.id)
     end
 
     # Only allow a list of trusted parameters through.

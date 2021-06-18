@@ -13,7 +13,6 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
-    $id_seller=params[:seller_id]
   end
 
   # GET /products/1/edit
@@ -68,7 +67,7 @@ class ProductsController < ApplicationController
 
     def product_params
      res= params.require(:product).permit(:name, :description, :category_id,:price, :quantity, :is_active, image: [])
-     res[:seller_id]=$id_seller
+     res[:seller_id]=current_seller.id
      return res
     end
 

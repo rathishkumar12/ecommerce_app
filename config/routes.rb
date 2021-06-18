@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  devise_for :sellers ,path: 'sellers'
+  devise_for :buyers , path: 'buyers'
+
   resources :type_of_payments
   resources :categories
   resources :pincodes
@@ -7,6 +11,7 @@ Rails.application.routes.draw do
   resources :products
   resources :order_items
   resources :orders
+
  
   
   root 'home_page#home'

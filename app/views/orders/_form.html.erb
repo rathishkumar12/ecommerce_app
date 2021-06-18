@@ -11,10 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :buyer_id %>
-    <%= form.number_field :buyer_id %>
-  </div>
+  
   <div>
     <%= form.label :quantity %>
     <%= form.number_field  :quantity ,:max => Product.find(params[:product_id]).quantity ,:min =>1 %><br><br>

@@ -3,10 +3,10 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.where('seller_id='+params[:id])
+    @orders = Order.where('seller_id='+current_seller.id.to_s)
   end
   def index1
-    @orders = Order.all 
+    @orders = Order.where('buyer_id='+current_buyer.id.to_s)
     render 'orders/index'
   end
 
@@ -93,7 +93,8 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      res=params.require(:order).permit(:buyer_id,:status ,:type_of_payment_id ,:quantity)
+      res=params.require(:order).permit(:status ,:type_of_payment_id ,:quantity)
+      res[:buyer_id]=current_buyer.id
       res[:status]="Waiting for Seller Confirmation."
       res[:buyer_address_id]=$id_address
       if Product.find($id_product).price*res[:quantity].to_i < 500

@@ -1,11 +1,11 @@
-<div class="card" style="background-color: skyblue;">
 
+<center>
 <div class="row" style="width:1000px;margin:50px;" >
   <div class="col-sm-6" >
     <div class="card">
       <div class="card-body" >
        <%= image_tag ('icon/buyer.jpg'), style: 'height:200px;width:300px;margin-bottom:20px;' %>
-       <%= link_to 'Iam A Buyer', new_buyer_path, class: 'btn btn-primary' , style: 'color:white;' %>
+       <%= link_to 'Iam A Buyer',new_buyer_registration_path , class: 'btn btn-primary' , style: 'color:white;' %>
       </div>
     </div>
   </div>
@@ -13,9 +13,9 @@
     <div class="card">
       <div class="card-body" >
        <%= image_tag ('icon/seller.jpg'), style: 'height:200px;width:300px;margin-bottom:20px;' %>
-       <%= link_to 'Iam A Seller', new_seller_path, class: 'btn btn-primary' ,style: 'color:white;' %>
+       <%= link_to 'Iam A Seller', new_seller_registration_path, class: 'btn btn-primary' ,style: 'color:white;' %>
       </div>
     </div>
   </div>
 </div>
-</div>
+</center>

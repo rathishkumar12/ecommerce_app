@@ -11,8 +11,8 @@
       <% end %>
       <ul class="navbar-nav mr-auto navbar-right">
         <li class="nav-item" style="margin-left: 10px;font-size: 15px;text-decoration: underline;">
-          <%= link_to 'orders' , sellers_order_path(:id=>params[:id]) ,class: "text-white"  %>
-        </li>
-     
+          <%= link_to 'orders ' , sellers_order_path ,class: "text-white"  %> </li>
+       <li class="nav-item" style="margin-left: 10px;font-size: 15px;text-decoration: underline;"> 
+        <%= button_to ' Log Out' , destroy_seller_session_path ,class: "btn btn-outline-danger" ,method: :delete  %></li>
     </div>
   </nav>

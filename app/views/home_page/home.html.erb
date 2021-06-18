@@ -1,4 +1,11 @@
 
+
+<% if buyer_signed_in? %>
 <%= render 'home_page/navigation_bar' %>  
 <%= render 'home_page/display_allproducts' ,obj: Product %>
 <%= render 'home_page/footer' %>
+<%end%>
+<% if seller_signed_in? %>
+<%= render 'sellers/nav_seller' %>
+<%= render 'sellers/seller_products' , obj:Product.where('seller_id='+current_seller.id.to_s)  %>
+<%end%>

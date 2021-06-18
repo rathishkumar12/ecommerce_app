@@ -22,11 +22,11 @@
 
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" style="margin-left: 10px;font-size: 15px;text-decoration: underline;">
-          <a class="nav-link bg-dark text-white" href="#" >Log In </a>
+
+          <%= button_to("Log out", destroy_buyer_session_path, method: :delete)%>
+
         </li>
-        <li class="nav-item" style="margin-left: 10px;font-size: 15px;text-decoration: underline;">
-          <a class="nav-link bg-dark text-white" href="home_page/index" >Sign Up</a>
-        </li>
+        
         <li class="nav-item" style="margin-left: 10px;font-size: 15px;text-decoration: underline;">
           <a class="nav-link bg-dark text-white" href ='buyers/order' >Orders</a>
         </li>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_17_062632) do
+ActiveRecord::Schema.define(version: 2021_06_18_081413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,12 +55,17 @@ ActiveRecord::Schema.define(version: 2021_06_17_062632) do
 
   create_table "buyers", force: :cascade do |t|
     t.string "buyer_name"
-    t.string "email"
     t.bigint "phone_number"
-    t.string "password"
     t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_buyers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_buyers_on_reset_password_token", unique: true
   end
 
   create_table "categories", force: :cascade do |t|
@@ -122,12 +127,17 @@ ActiveRecord::Schema.define(version: 2021_06_17_062632) do
   create_table "sellers", force: :cascade do |t|
     t.string "seller_name"
     t.string "seller_company_name"
-    t.string "email"
     t.bigint "phone_number"
-    t.string "password"
     t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_sellers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_sellers_on_reset_password_token", unique: true
   end
 
   create_table "type_of_payments", force: :cascade do |t|
