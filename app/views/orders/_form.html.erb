@@ -10,26 +10,24 @@
       </ul>
     </div>
   <% end %>
-
-  
+  <div class="container-fluid" style="margin-top: 110px;">
   <div>
-    <%= form.label :quantity %>
-    <%= form.number_field  :quantity ,:max => Product.find(params[:product_id]).quantity ,:min =>1 %><br><br>
+    <h6><%= form.label :quantity ,class:'fw-bold'%></h6>
+    <%= form.number_field  :quantity ,:max => Product.find(params[:product_id]).quantity ,:min =>1 ,class: 'form-control',style:'width:100px'%><br><br>
   </div>
    <div>
-    <%=form.label :type_of_payment_id%>
-    <%= form.collection_select :type_of_payment_id , TypeOfPayment.order(:name), :id, :name %> <br><br>
+    <h6><%=form.label :type_of_payment_id,class:'fw-bold'%></h6>
+    <%= form.collection_select :type_of_payment_id , TypeOfPayment.order(:name), :id, :name , {}, class: 'form-select',style:'width:200px;font-size:15px;' %> <br><br>
    </div> 
     <div class="field">
 
-     <p>Address Line : <%= @address.street_name %> <p>
-     <p>City : <%= @address.pincode.city %> <p>
-     <p>Pincode : <%= @address.pincode.pincode %> <p> 
+     <h6><b>Address Line : </b><%= @address.street_name %> </h6>
+     <h6><b>City : </b><%= @address.pincode.city %> </h6>
+     <h6><b>Pincode : </b><%= @address.pincode.pincode %> </h6> 
     
     </div>
- 
-
   <div class="actions">
-    <%= form.submit 'Place order' %>
+    <%= form.submit 'Place order' ,class:'btn btn-outline-success'%>
   </div>
+</div>
 <% end %>

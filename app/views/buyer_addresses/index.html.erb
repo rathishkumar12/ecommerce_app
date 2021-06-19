@@ -1,37 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Saved Addresses</h1>
+<h4 class="text-center">Saved Addresses</h4>
+<div class="list-group">
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Index</th>
-      <th>Buyer</th>
-      <th>Street name</th>
-      <th>Lat</th>
-      <th>Lon</th>
-      <th>Pincode</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <% @buyer_addresses.each do |buyer_address| %>
 
-  <tbody>
-    <% @buyer_addresses.each do |buyer_address| %>
-      <tr  scope="row">
-         <td><%= buyer_address.id %></td>
-        <td><%= buyer_address.buyer_id %></td>
-        <td><%= buyer_address.street_name %></td>
-        <td><%= buyer_address.lat %></td>
-        <td><%= buyer_address.lon %></td>
-        <td><%= buyer_address.pincode.pincode %></td>
-        <td><%= link_to 'Edit', edit_buyer_address_path(buyer_address) %></td>
-        <td><%= link_to 'Destroy', buyer_address ,method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%=   link_to 'Select', new_order_path(:product_id=>params[:product_id],:address_id => buyer_address.id ,:seller_id=>params[:seller_id]) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="list-group-item  list-group-item-secondary" >
+    <div class="d-flex w-100 justify-content-between">
+      <h6 class="mb-1"><b>Address Line : </b><%= buyer_address.street_name %></h6>
+    </div>
+    <h6 class="mb-1"><b>Pincode : </b><%= buyer_address.pincode.pincode %></h6>
+     <%=   link_to 'Select', new_order_path(:product_id=>params[:product_id],:address_id => buyer_address.id ,:seller_id=>params[:seller_id]) ,class: 'list-group-item'%>
+    <%= link_to 'Edit', edit_buyer_address_path(buyer_address) ,class: 'list-group-item'%>
+    <%= link_to 'Destroy', buyer_address ,method: :delete, data: { confirm: 'Are you sure?' } ,class: 'list-group-item'%>
+   <br>
+  </div>
 
+  <% end %>
+</div>
 <br>
-
 <%= link_to 'New Buyer Address', new_buyer_address_path %>

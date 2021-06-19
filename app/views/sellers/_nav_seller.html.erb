@@ -10,9 +10,10 @@
       <%= form_with url: "/search" ,  class: "d-flex me-2" , method: :get do |form| %>
       <% end %>
       <ul class="navbar-nav mr-auto navbar-right">
-        <li class="nav-item" style="margin-left: 10px;font-size: 15px;text-decoration: underline;">
-          <%= link_to 'orders ' , sellers_order_path ,class: "text-white"  %> </li>
-       <li class="nav-item" style="margin-left: 10px;font-size: 15px;text-decoration: underline;"> 
+        <li class="nav-item" style="margin-left:10px">
+       <%= button_to 'orders ' , sellers_order_path ,class: "btn btn-outline-success" ,method: :get%> </li>
+       <li class="nav-item" style="margin-left:10px" > 
         <%= button_to ' Log Out' , destroy_seller_session_path ,class: "btn btn-outline-danger" ,method: :delete  %></li>
+      </ul>
     </div>
   </nav>

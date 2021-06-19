@@ -1,7 +1,14 @@
-<h1>New Order</h1>
 
-<%= render 'product_order_show' ,product: Product.find(params[:product_id]) %>
-
-<%= render 'form', order: @order %>
-
-<%= link_to 'Back', url_for(:back) %>
+<h3 class="fw-bold text-center">New Order</h3><br>
+<div class="card container-fluid" style="width:1300px;text-align: left;">
+  <div class="row">
+    <div class="col-sm-6 bg-dark">
+      <%= render 'product_order_show' ,product: Product.find(params[:product_id]) %>
+    </div>
+    <div class="col-sm-6" style="background-color:lightgray;">
+      <%= render 'form', order: @order %>
+    </div>
+  </div>
+</div>
+<br>
+<%= link_to 'Back', url_for(:back) ,class: 'btn btn-success text-white',style:'margin-left:250px'%>

@@ -1,27 +1,32 @@
 <p id="notice"><%= notice %></p>
-
-<p>
+<div style="color:lightgray;">
+<h6>
   <strong>Name:</strong>
   <%= product.name %>
-</p>
-<% (0...product.image.count).each do |image| %>
-<%= image_tag(product.image[image],style: 'height:300px;width:300px;') %>
-<% end %>
-<p>
+</h6>
+<%if %>
+<%= image_tag(product.image[0],style: 'height:300px;width:300px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+') %>
+<%else%>
+<%= image_tag('icon/noImage.jpeg',style: 'height:300px;width:300px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+') %>
+<%end%>
+<h6><br>
   <strong>Description:</strong>
   <%= product.description %>
-</p>
-<p>
+</h6><br>
+<h6>
   <strong>Seller:</strong>
   <%= product.seller.seller_company_name %>
-</p>
-<p>
+</h6><br>
+<h6>
   <strong>Price:</strong>
   <%= product.price %>
-</p>
+</h6><br>
 
-<p>
+<h6>
   <strong>Available Quantity :</strong>
-  <%= product.quantity %><hr>
-</p>
+  <%= product.quantity %>
+</h6><br>
+</div>
 

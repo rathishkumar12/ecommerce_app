@@ -18,18 +18,17 @@
       </div>
 
       <% end %>
-
-
+       <li class="nav-item" style="margin-left: 10px;font-size: 15px;text-decoration: underline;">
+          <button class="btn btn-outline-success" href ='buyers/order' >Orders</button>
+        </li>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" style="margin-left: 10px;font-size: 15px;text-decoration: underline;">
 
-          <%= button_to("Log out", destroy_buyer_session_path, method: :delete)%>
+          <%= button_to("Log out", destroy_buyer_session_path, method: :delete ,class: 'btn btn-outline-danger')%>
 
         </li>
         
-        <li class="nav-item" style="margin-left: 10px;font-size: 15px;text-decoration: underline;">
-          <a class="nav-link bg-dark text-white" href ='buyers/order' >Orders</a>
-        </li>
+       
       </ul>
     </div>
   </nav>

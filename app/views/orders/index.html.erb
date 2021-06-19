@@ -1,35 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Orders</h1>
+<h4 class="text-center">Orders</h4>
 
-<table class="table">
-  <thead  >
-    <tr >
-      <th>Buyer</th>
-      <th>Seller</th>
-      <th>Status</th>
-       <th>Address Line</th>
-       <th>Type of Payment</th>
-      <th>Ordered</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr scope="row">
-        <td><%= order.buyer.buyer_name%></td>
-        <td><%= order.seller.seller_company_name%></td>
-        <td><%= order.status %></td>
-        <td><%= order.buyer_address.street_name+","+order.buyer_address.pincode.pincode.to_s unless order.buyer_address.nil? %></td>
-        <td><%= order.type_of_payment.name %></td>
-        <td><%= +time_ago_in_words(order.created_at) +" ago"%></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to 'Back', url_for(:back) %>
 <br>
+<center>
+<% @orders.each do |order| %>
+  <div class="card mb-3" style="max-width: 700px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <% if order.order_item[0].product.image.count>0 %>
+      <%= image_tag(order.order_item[0].product.image[0] ,class: "card-img-top")  %>
+      <%else%>
+      <%= image_tag('icon/noImage.jpg' , class:"card-img-top")  %>
+      <%end%>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body" style="text-align:left; ">
+      <br>
+      <h6 class="fw-bold"><%= order.order_item[0].product.name %></h6>
+     <h6 class="fw-bold">Product Id :<%= order.order_item[0].product_id %></h6>
+     <h6 class="fw-bold">Quantity :<%= order.order_item[0].quantity %></h6>
+    <% if buyer_signed_in?%>
+    <h6 ><b>Sold by : </b><%= order.seller.seller_company_name%></h6>
+    <%else%>
+    <h6 ><b>Bought by : </b><%= order.buyer.buyer_name%></h6>
+    <%end%>
+    <h5 style="color: #9c0902;"><sup><span>&#8377</span></sup><%= order.amount %></h5>
+      <ol class="breadcrumb">
+      <li class="breadcrumb-item"> <%= link_to 'Show', order %></li>
+     <li class="breadcrumb-item">  <%= link_to 'Edit', edit_order_path(order) %></li>
+      <li class="breadcrumb-item"> <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+    </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+</center>
+<br>
+<%= link_to 'Back', url_for(:back) ,class:'btn btn-success text-white'  %>

@@ -3,7 +3,7 @@
   <h4 class = 'fw-bold text-center' style="color:darkgrey;">No Products Found !!!</h4>
 <%else%>
 <% obj.all.each do |product| %>
-  <div class="card col" style="margin:20px;">
+  <div class="card col" style="margin:20px; text-align: center;">
     <h4 class="text-center fw-bold" style="margin:20px;"><%= product.name  %></h4>
    <div class="row" style="margin:10px;">
    <% (0...product.image.count).each do |image| %>

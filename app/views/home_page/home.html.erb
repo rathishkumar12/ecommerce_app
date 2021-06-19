@@ -4,8 +4,35 @@
 <%= render 'home_page/navigation_bar' %>  
 <%= render 'home_page/display_allproducts' ,obj: Product %>
 <%= render 'home_page/footer' %>
-<%end%>
-<% if seller_signed_in? %>
+<% elsif seller_signed_in? %>
 <%= render 'sellers/nav_seller' %>
 <%= render 'sellers/seller_products' , obj:Product.where('seller_id='+current_seller.id.to_s)  %>
+<%else%>
+
+<center>
+
+	<div class="card-group" style="width:1000px">
+  <div class="card" style="margin:10px">
+    <%= image_tag ('icon/buyer.jpeg'),class: 'card-img-top', style: 'height:250px;margin-bottom:20px;'  %>
+    <div class="card-body">
+      <h5 class="card-title fw-bold text-success">Buyer</h5>
+      <p class="card-text">Buy Trustable products with our guidance</p>
+    </div>
+    <div class="card-footer">
+        <%= link_to 'Continue as a Buyer' , new_buyer_session_path,class: 'text-success bg-light'%>
+    </div>
+  </div>
+  <div class="card" style="margin:10px">
+     <%= image_tag ('icon/seller.jpeg'),class: 'card-img-top' , style: 'height:250px;margin-bottom:20px;'%>
+    <div class="card-body">
+      <h5 class="card-title fw-bold text-success">Seller</h5>
+      <p class="card-text">Sell more with E-Commerce</p>
+    </div>
+    <div class="card-footer">
+      <%= link_to 'Continue as a Seller' , new_seller_session_path ,class: 'text-success bg-light'%>
+    </div>
+  </div>
+  
+</div>
+</center>
 <%end%>
