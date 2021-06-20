@@ -1,16 +1,22 @@
-<h3><u>Order Summary</u></h3>
+
+<div class="text-center bg-dark text-white fixed-top" style="height:70px;"><h3 style="margin-top:10px">Order Summary</h3></div>
+<div class="card container-fluid" style="width:600px;text-align: center;margin-top: 100px;"><br>
+	<div class="card-body">
 <%@order_summary.order_item.each do |order_item| %>
-<h4>Product : <%= order_item.product.name %></h4>
-<h4>Price : <%= order_item.product.price %></h4>
-<h4>Quantity : <%= order_item.quantity %></h4>
+<h6>Product : <%= order_item.product.name %></h6>
+<h6>Price : <%= order_item.product.price %></h6>
+<h6>Quantity : <%= order_item.quantity %></h6>
 <% if order_item.product.price <500 %>
-<h4>+50 delivery charges</h4>
+<h6 class="fw-bold">+50 delivery charges</h6>
 <%else%>
 <h4>Free delivery</h4>
 <% end %>	
+<br>
 <%end%>
-<h4>Total price : <%= @order_summary.amount %></h4>
-<%= link_to 'Home' , root_path %>
+<h4 style="color:#9c0902;text-align: center;"><sup><span>&#8377</span></sup><%= @order_summary.amount %></h4><br>
+<%= link_to 'Home' , root_path ,class:'btn btn-success text-white'%>
+</div>
+</div>
 
 
 

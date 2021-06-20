@@ -10,19 +10,18 @@
       </ul>
     </div>
   <% end %>
+  <div class="container">
+
   <div class="field">
 
-    <%= form.label :street_name %>
-    <%= form.text_area :street_name %>
-  </div>
-
-  
+    <%= form.text_area :street_name ,class: 'form-control',placeholder:'Address Line'%>
   </div>
  <div class="field">
-    <%= form.label :pincode %>
-    <%= form.number_field :pincode %>
+  
+    <%= form.number_field :pincode ,class: 'form-control',placeholder:'Pincode' %>
   </div>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:'btn btn-success'%>
   </div>
+</div>
 <% end %>

@@ -18,7 +18,7 @@
     <h4 style="color: #9c0902;"><sup><span>&#8377</span></sup><%= product.price %></h4>
 
      <h4  ><b>Description : </b><%= product.description %></h4>
-    <h4><b>Seller Name : </b><%= product.seller.seller_name %></h4>
+    <h4><b>Sold By: </b><%= product.seller.seller_company_name %></h4>
     <% if product.quantity>0 %>
     <h4 class="fw-bold text-success">In Stock !!!<h4>
     <%=   link_to 'Buy ', buyer_addresses_path(:product_id => product.id,:seller_id=>product.seller_id) ,class:'btn btn-success btn-lg text-white' %>

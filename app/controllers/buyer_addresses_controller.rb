@@ -26,6 +26,7 @@ class BuyerAddressesController < ApplicationController
 
     @buyer_address = BuyerAddress.new(buyer_address_params)
       if @buyer_address.save
+        
            redirect_back fallback_location: :back
       else
         

@@ -2,4 +2,5 @@
 
 
 <%= render 'sellers/nav_seller' %>
-<%= render 'sellers/seller_products' , obj:Product.where('seller_id='+params[:id])  %>
+
+<%= render 'sellers/seller_products' , obj:Product.where('seller_id='+current_seller.id)  %>

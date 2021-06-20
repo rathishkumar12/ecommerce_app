@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h4 class="text-center">Orders</h4>
+<div class="text-center bg-dark text-white fixed-top" style="height:70px;"><h3 class="fw-bold" style="margin-top:10px">Orders</h3></div>
 
 <br>
-<center>
+<center style="margin-top: 50px;">
 <% @orders.each do |order| %>
   <div class="card mb-3" style="max-width: 700px;">
   <div class="row g-0">
@@ -25,6 +25,7 @@
     <%else%>
     <h6 ><b>Bought by : </b><%= order.buyer.buyer_name%></h6>
     <%end%>
+    <h6 ><b>Status : </b><%= order.status%></h6>
     <h5 style="color: #9c0902;"><sup><span>&#8377</span></sup><%= order.amount %></h5>
       <ol class="breadcrumb">
       <li class="breadcrumb-item"> <%= link_to 'Show', order %></li>
@@ -37,5 +38,5 @@
 </div>
 <% end %>
 </center>
-<br>
+<br><br>
 <%= link_to 'Back', url_for(:back) ,class:'btn btn-success text-white'  %>
