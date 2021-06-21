@@ -11,7 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require bootstrap
- *= require_tree .
+ *= require buyers
  *= require_self
  */
  
@@ -22,6 +22,7 @@
   width: 100%;
   padding-top: 60px;
  }
+ 
  #sticky-footer {
     position: fixed;
     height: 70px;
