@@ -12,4 +12,5 @@ class Buyer < ApplicationRecord
 	CHECK_PASSWORD = /\A^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$\z/
 	validates :email , format: { with:  CHECK_EMAIL} , uniqueness: true
 	validates :password , format: { with:  CHECK_PASSWORD}
+	devise :registerable, :confirmable
 end
