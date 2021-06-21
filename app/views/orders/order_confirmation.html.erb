@@ -5,13 +5,13 @@
 <%@order_summary.order_item.each do |order_item| %>
 <h6>Product : <%= order_item.product.name %></h6>
 <h6>Price : <%= order_item.product.price %></h6>
-<h6>Quantity : <%= order_item.quantity %></h6>
+<h6>Quantity : <%= order_item.quantity %></h6><br>
 <% if order_item.product.price <500 %>
-<h6 class="fw-bold">+50 delivery charges</h6>
+<h6 class="fw-bold text-warning">+50 delivery charges</h6>
 <%else%>
-<h4>Free delivery</h4>
+<h4 class="text-success fw-bold">Free delivery</h4>
 <% end %>	
-<br>
+
 <%end%>
 <h4 style="color:#9c0902;text-align: center;"><sup><span>&#8377</span></sup><%= @order_summary.amount %></h4><br>
 <%= link_to 'Home' , root_path ,class:'btn btn-success text-white'%>

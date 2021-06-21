@@ -1,6 +1,6 @@
 class SellersController < ApplicationController
   before_action :set_seller, only: %i[ show edit update destroy ]
-
+  before_save { self.email = email.downcase }
   # GET /sellers or /sellers.json
   def index
     @sellers = Seller.all
