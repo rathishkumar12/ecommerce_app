@@ -45,8 +45,6 @@ module Api
         puts buyer.errors.full_messages
       end  
 
-
-
       private 
       def  buyer_params
         res={}

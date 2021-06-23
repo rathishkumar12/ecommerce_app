@@ -13,13 +13,12 @@ Rails.application.routes.draw do
   resources :products
   resources :order_items
   resources :orders
+
+  
   namespace :api, defaults: { format: 'json' } do
   namespace :v1 do
     resources :buyers 
   end
-
-
-
   end
   
   root 'home_page#home'
