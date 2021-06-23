@@ -1,8 +1,12 @@
 module Api
   module V1
+   
     class BuyersController < ApplicationController
       protect_from_forgery with: :null_session
       respond_to :json
+
+
+       before_action :doorkeeper_authorize!
 
       def index
         respond_with Buyer.all
@@ -55,6 +59,9 @@ module Api
         res[:is_active]=params[:is_active]
         return res
       end  
+      def current_buyer
+      @current_buyer ||= Buyer.find_by(id: doorkeeper_token[:resource_owner_id])
+      end
     end
   end
 end

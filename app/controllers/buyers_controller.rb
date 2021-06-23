@@ -1,6 +1,7 @@
 class BuyersController < ApplicationController
   before_action :set_buyer, only: %i[ show edit update destroy ]
   before_save { self.email = email.downcase }
+  before_action :doorkeeper_authorize!
   # GET /buyers or /buyers.json
   def index
     @buyers = Buyer.all
@@ -67,4 +68,8 @@ class BuyersController < ApplicationController
     def buyer_params
       params.require(:buyer).permit(:buyer_name, :email, :phone_number, :password, :is_active)
     end
+
+     def current_buyer
+      @current_buyer ||= Buyer.find_by(id: doorkeeper_token[:resource_owner_id])
+      end
 end
