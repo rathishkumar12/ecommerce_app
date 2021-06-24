@@ -4,13 +4,17 @@ Doorkeeper.configure do
   # Change the ORM that doorkeeper will use (requires ORM extensions installed).
   # Check the list of supported ORMs here: https://github.com/doorkeeper-gem/doorkeeper#orms
   orm :active_record
-
   # This block will be called to check whether the resource owner is authenticated or not.
     resource_owner_authenticator do
-        current_buyer || warden.authenticate!(scope: :buyer)
+        
     end
 
-  
+  resource_owner_from_credentials do |_routes|
+    Buyer.authenticate(params[:email], params[:password])
+  end
+
+
+   allow_blank_redirect_uri true
 
   # If you didn't skip applications controller from Doorkeeper routes in your application routes.rb
   # file then you need to declare this block in order to restrict access to the web interface for
@@ -22,9 +26,15 @@ Doorkeeper.configure do
   end
 
 
+   
 
-  grant_flows ['client_credentials']
+
   
+  skip_authorization do
+    true
+  end
+
+  grant_flows %w[password]
   # You can use your own model classes if you need to extend (or even override) default
   # Doorkeeper models such as `Application`, `AccessToken` and `AccessGrant.
   #

@@ -2,11 +2,12 @@ module Api
   module V1
    
     class BuyersController < ApplicationController
+      before_action :doorkeeper_authorize!
       protect_from_forgery with: :null_session
       respond_to :json
 
 
-       before_action :doorkeeper_authorize!
+       
 
       def index
         respond_with Buyer.all

@@ -29,4 +29,5 @@ class Buyer < ApplicationRecord
     buyer &.valid_password?(password) ? buyer : nil
    end
 
+   
 end
