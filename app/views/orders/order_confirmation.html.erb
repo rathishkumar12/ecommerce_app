@@ -6,7 +6,7 @@
 <h6>Product : <%= order_item.product.name %></h6>
 <h6>Price : <%= order_item.product.price %></h6>
 <h6>Quantity : <%= order_item.quantity %></h6><br>
-<% if order_item.product.price <500 %>
+<% if @order_summary.amount <500 %>
 <h6 class="fw-bold text-warning">+50 delivery charges</h6>
 <%else%>
 <h4 class="text-success fw-bold">Free delivery</h4>
