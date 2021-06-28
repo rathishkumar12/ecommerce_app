@@ -14,5 +14,6 @@ ActiveAdmin.register Buyer do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+  filter :buyer_name , as: :select
+  filter :phone_number , as: :select
 end

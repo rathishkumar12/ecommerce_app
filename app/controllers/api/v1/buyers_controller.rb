@@ -2,28 +2,20 @@ module Api
   module V1
    
     class BuyersController < ApplicationController
-      before_action :doorkeeper_authorize!
+      before_action :doorkeeper_authorize! unless Rails.env.test?
       protect_from_forgery with: :null_session
       respond_to :json
-
-
-       
-
+      
       def index
         respond_with Buyer.all
       end
 
       def create
         
-        puts "oeihheoihroierhoiehoiwihow
-
-
-        #{params}
-
-       oegruegriuwegriueg "
-
-      respond_with Buyer.create(buyer_params)
-
+       buyer=Buyer.new(buyer_params)
+       buyer.skip_confirmation!
+       buyer.save
+       render json: {errors:buyer.errors.full_messages}
       end  
 
       def show
@@ -32,9 +24,11 @@ module Api
 
       def destroy
         if Buyer.find_by(id:params[:id]).nil?
-          respond_with "Cant find the data"
+          render json: {message:'no user found'}
         else
-          respond_with Buyer.find(params[:id]).destroy
+           buyer=Buyer.find(params[:id])
+           buyer.destroy
+          render json: {errors:buyer.errors.full_messages}
         end
       end
 
@@ -42,12 +36,7 @@ module Api
       def update
         buyer=Buyer.find(params[:id])
         buyer.update(buyer_name:params[:buyer_name])
-        puts "kfuugu
-        fyfyfy
-        ifyiyf"
-
-
-        puts buyer.errors.full_messages
+        render json: {errors:buyer.errors.full_messages}
       end  
 
       private 

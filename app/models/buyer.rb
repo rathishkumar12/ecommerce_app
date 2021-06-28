@@ -28,6 +28,6 @@ class Buyer < ApplicationRecord
     buyer = Buyer.find_for_authentication(email: email)
     buyer &.valid_password?(password) ? buyer : nil
    end
-
+   
    
 end
