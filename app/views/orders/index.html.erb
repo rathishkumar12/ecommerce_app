@@ -8,8 +8,8 @@
   <div class="card mb-3" style="max-width: 700px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <% if order.order_item[0].product.image.count>0 %>
-      <%= image_tag(order.order_item[0].product.image[0] ,class: "card-img-top")  %>
+      <% if order.product[0].image.count>0 %>
+      <%= image_tag(order.product[0].image[0] ,class: "card-img-top")  %>
       <%else%>
       <%= image_tag('icon/noImage.jpg' , class:"card-img-top")  %>
       <%end%>
@@ -17,7 +17,7 @@
     <div class="col-md-8">
       <div class="card-body" style="text-align:left; ">
       <br>
-      <h6 class="fw-bold"><%= order.order_item[0].product.name %></h6>
+      <h6 class="fw-bold"><%= order.product[0].name %></h6>
      <h6 class="fw-bold">Product Id :<%= order.order_item[0].product_id %></h6>
      <h6 class="fw-bold">Quantity :<%= order.order_item[0].quantity %></h6>
     <% if buyer_signed_in?%>

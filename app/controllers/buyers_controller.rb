@@ -2,6 +2,8 @@ class BuyersController < ApplicationController
   before_action :set_buyer, only: %i[ show edit update destroy ]
   before_save { self.email = email.downcase }
   before_action :doorkeeper_authorize! unless Rails.env.test?
+  
+
   # GET /buyers or /buyers.json
   def index
     @buyers = Buyer.all

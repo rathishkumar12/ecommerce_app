@@ -3,12 +3,8 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-    puts "get 
 
-    #fehfeoihfeoihfoiehfoehfoehfoeuhfouehfoeufhouefheuofhouef
-
-    index"
-    @orders = Order.where('seller_id='+current_seller.id.to_s)
+    @orders = Order.where('seller_id='+current_seller.id.to_s).includes(:buyer,:seller,:buyer_address,:type_of_payment,:order_item)
 
   end
 
@@ -18,11 +14,7 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-     puts "put 
-
-    #fehfeoihfeoihfoiehfoehfsdsdsdsdsdoehfoeuhfouehfoeufhouefheuofhouef
-
-    index"
+   
     Order.update(params[:id], status: "Confirmed by Seller")
 
     @orders = Order.where('seller_id='+current_seller.id.to_s)

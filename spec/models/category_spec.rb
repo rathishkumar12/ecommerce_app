@@ -7,17 +7,17 @@ RSpec.describe Category , :type => :model do
 
     it 'ensures Category name exist' do
 
-      category=Category.new.save
-
-      expect(category).to eq(false)
+      category=build(:category,category_name:'')
+     
+      expect(category.save).to eq(false)
 
     end
 
     it 'save Category successfully' do
 
-      category=Category.new(category_name:"Bikes").save
+      category=category=build(:category)
 
-      expect(category).to eq(true)
+      expect(category.save).to eq(true)
 
     end
 

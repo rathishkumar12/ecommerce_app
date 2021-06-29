@@ -3,11 +3,8 @@ require 'rails_helper'
 RSpec.describe BuyerAddress , :type => :model do
 
   before do 
-    @buyer=Buyer.new(buyer_name:'lakshmi',email:'18euee059@skcet.ac.in',phone_number:8681008767,password:'lakshmi123',is_active:true)
-    @pincode=Pincode.new(pincode:641026,city:'coimbatore',area:'selvapuram')
-    @buyer.skip_confirmation!
-    @buyer.save 
-    @pincode.save
+    @pincode=create(:pincode)
+    @buyer=create(:buyer)
   end  
 
   context 'tests for validations' do

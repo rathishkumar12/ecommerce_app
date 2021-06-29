@@ -3,11 +3,8 @@ require 'rails_helper'
 RSpec.describe "buyers_controller",type: :request do 
 	
 	before do 
-		@buyer=Buyer.new(buyer_name:'lakshmi',email:'18euee059@skcet.ac.in',phone_number:8681008767,password:'lakshmi123',is_active:true)
-		@pincode=Pincode.new(pincode:641026,city:'coimbatore',area:'selvapuram')
-		@buyer.skip_confirmation!
-		@buyer.save 
-		@pincode.save
+		@buyer=create(:buyer)
+		@pincode=create(:pincode)
 	end  
 
 	context 'GET requests' do 
