@@ -14,5 +14,6 @@ ActiveAdmin.register OrderItem do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+  filter :product, as: :select
   
 end

@@ -26,14 +26,15 @@
     <%else%>
     <h6 ><b>Bought by : </b><%= order.buyer.buyer_name unless order.buyer.nil?%></h6>
     <h6 ><b>Status : </b><%= order.status%> </h6>
+    <h5 style="color: #9c0902;"><sup><span>&#8377</span></sup><%= order.amount %></h5>
+    <%if order.status.to_s=='Waiting for Seller Confirmation.'%>
     <h6 class='fw-bold'> <%= button_to 'confirm ' , sellers_order_path(id:order) ,class: "btn btn-outline-success" ,method: :put%></h6>
     <%end%>
+    <%end%>
     
-    <h5 style="color: #9c0902;"><sup><span>&#8377</span></sup><%= order.amount %></h5>
+    
       <ol class="breadcrumb">
-      <li class="breadcrumb-item"> <%= link_to 'Show', order %></li>
-     <li class="breadcrumb-item">  <%= link_to 'Edit', edit_order_path(order) %></li>
-      <li class="breadcrumb-item"> <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+       <%= button_to 'cancel order ' , buyers_order_path(id:order) ,class: "btn btn-outline-danger" ,method: :delete%>
     </ol>
       </div>
     </div>

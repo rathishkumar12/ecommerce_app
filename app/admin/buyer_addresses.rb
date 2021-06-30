@@ -17,13 +17,12 @@ ActiveAdmin.register BuyerAddress do
   index do
     selectable_column
     id_column
-    column  :buyer_id, :as => :select, :collection => Buyer.find_by(id: :buyer_id).buyer_id
+    column  :buyer_id
     column :street_name
     column :pincode_id
     column :created_at
     column :updated_at
     actions
   end
-  filter :buyer_id , as: :select
-  filter :pincode_id , as: :select
+  filter :street_name, as: :select
 end

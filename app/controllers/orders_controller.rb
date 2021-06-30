@@ -91,11 +91,17 @@ class OrdersController < ApplicationController
 
   # DELETE /orders/1 or /orders/1.json
   def destroy
-    @order.destroy
-    respond_to do |format|
-      format.html { redirect_to orders_url, notice: "Order was successfully destroyed." }
-      format.json { head :no_content }
-    end
+      order=Order.find(params[:id])
+      product=order.order_item[0].product
+      product.update(quantity:product.quantity+order.order_item[0].quantity)
+      order.destroy
+      if seller_signed_in?
+      @orders = Order.where('seller_id='+current_seller.id.to_s)
+      render 'orders/index'
+      else
+      @orders = Order.where('buyer_id='+current_buyer.id.to_s)
+      render 'orders/index'
+      end
   end
 
   private

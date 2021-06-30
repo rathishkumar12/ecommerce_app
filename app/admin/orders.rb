@@ -14,5 +14,6 @@ ActiveAdmin.register Order do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+  filter :type_of_payment, as: :select
+  filter :status, as: :select
 end

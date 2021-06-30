@@ -14,7 +14,7 @@ class HomePageController < ApplicationController
 
 		@search_keyword=params[:search].to_s
 		if(@search_keyword.length>0)
-		@search_products=Product.where( 'lower(name) LIKE ?' ,pattern).preload(:category)
+		@search_products=Product.where( 'lower(name) LIKE ?' ,pattern).includes(:category,:seller)
 		puts @search_products
 		render 'home_page/search_results'
 	    else
