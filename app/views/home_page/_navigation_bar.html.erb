@@ -20,14 +20,19 @@
       <% end %>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" style="margin-left: 10px;font-size: 15px;text-decoration: underline;">
-
           <a class="text-center" href ='buyers/order' ><span class="material-icons mx-2" style="font-size: 36px;">shopping_bag</span></a>
         </li>
         <li class="nav-item" style="margin-left: 10px;font-size: 15px;text-decoration: underline;">
-
-          <%= button_to("Log out", destroy_buyer_session_path, method: :delete ,class: 'btn btn-outline-danger')%>
-
         </li>
       </ul>
     </div>
+    <a class="text-center" href =''><span class="material-icons mx-2" style="font-size: 36px;color: gray;">account_circle</span>
+    </a>
+     <%unless current_buyer.buyer_name.nil? %>
+      <%=current_buyer.buyer_name  %>
+      <%else%>
+      User 
+      <%end%>
+    <%= button_to("Log out", destroy_buyer_session_path, method: :delete ,class: 'btn btn-danger',style:'margin-right:10px;margin-left:10px')%>
+
   </nav>

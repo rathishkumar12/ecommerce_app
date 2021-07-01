@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h4 class="text-center">Saved Addresses</h4>
-<div class="list-group">
+
+<%= render 'shared/header' ,obj:'Saved Addresses' %>
+
+<div class="list-group" style="margin:100px;">
 
   <% @buyer_addresses.each do |buyer_address| %>
 
@@ -12,11 +14,9 @@
     <h6 class="mb-1"><b>Pincode : </b><%= buyer_address.pincode.pincode %></h6>
      <%=   link_to 'Select', new_order_path(:product_id=>params[:product_id],:address_id => buyer_address.id ,:seller_id=>params[:seller_id]) ,class: 'list-group-item'%>
     <%= link_to 'Edit', edit_buyer_address_path(buyer_address) ,class: 'list-group-item'%>
-    <%= link_to 'Destroy', buyer_address ,method: :delete, data: { confirm: 'Are you sure?' } ,class: 'list-group-item'%>
    <br>
   </div>
-
   <% end %>
+  <%= link_to 'New Buyer Address', new_buyer_address_path %>
 </div>
 <br>
-<%= link_to 'New Buyer Address', new_buyer_address_path %>

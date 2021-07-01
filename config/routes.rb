@@ -34,6 +34,5 @@ Rails.application.routes.draw do
   get 'buyers/order' ,to: 'orders#index1'
   delete 'buyers/order' ,to: 'orders#destroy'
   put 'sellers/order', to: 'orders#confirm'
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :buyers 
 end

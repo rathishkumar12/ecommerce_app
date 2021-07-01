@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<div class="text-center bg-dark text-white fixed-top" style="height:70px;"><h3 class="fw-bold" style="margin-top:10px">Orders</h3></div>
-
+<%= render 'shared/header' ,obj:'Orders' %>
 <br>
 <center style="margin-top: 50px;">
 <% @orders.each do |order| %>
@@ -31,8 +30,6 @@
     <h6 class='fw-bold'> <%= button_to 'confirm ' , sellers_order_path(id:order) ,class: "btn btn-outline-success" ,method: :put%></h6>
     <%end%>
     <%end%>
-    
-    
       <ol class="breadcrumb">
        <%= button_to 'cancel order ' , buyers_order_path(id:order) ,class: "btn btn-outline-danger" ,method: :delete%>
     </ol>

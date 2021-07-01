@@ -1,19 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white fixed-top">
   <a class="navbar-brand fw-bold text-white" style="margin-left: 20px;" href="/"> E-COMMERCE <sup class="text-success">Seller Console</sup></a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="collapse navbar-collapse" id="navbarText">
+  <div class="collapse navbar-collapse" id="navbarText">
 
-      <%= form_with url: "/search" ,  class: "d-flex me-2" , method: :get do |form| %>
-      <% end %>
-      <ul class="navbar-nav mr-auto navbar-right">
-        <li class="nav-item" style="margin-left:10px">
-       <%= button_to 'orders ' , sellers_order_path ,class: "btn btn-outline-success" ,method: :get%> </li>
-       <li class="nav-item" style="margin-left:10px" > 
-        <%= button_to ' Log Out' , destroy_seller_session_path ,class: "btn btn-outline-danger" ,method: :delete  %></li>
+    <%= form_with url: "/search" ,  class: "d-flex me-2" , method: :get do |form| %>
+    <% end %>
+    <ul class="navbar-nav mr-auto navbar-right">
+      <li class="nav-item" style="margin-left:10px">
+        <a class="text-center" href ='sellers/order' ><span class="material-icons mx-2" style="font-size: 36px;">shopping_bag</span></a>
       </ul>
+
     </div>
+    <a class="text-center" href ='' ><span class="material-icons mx-2" style="font-size: 36px;color: gray;">account_circle</span> </a>
+    <%unless current_seller.seller_company_name.nil? %>
+    <%=current_seller.seller_company_name  %>
+    <%else%>
+    User 
+    <%end%>
+    <%= button_to ' Log Out' , destroy_seller_session_path ,class: "btn btn-danger" ,method: :delete  ,style:'margin-left:10px;margin-right:10px;'%>
+
   </nav>

@@ -1,6 +1,7 @@
 class BuyerAddressesController < ApplicationController
   
   before_action :set_buyer_address, only: %i[ show edit update destroy ]
+  before_action :authenticate_buyer!
 
   # GET /buyer_addresses or /buyer_addresses.json
   def index
@@ -24,7 +25,7 @@ class BuyerAddressesController < ApplicationController
   # POST /buyer_addresses or /buyer_addresses.json
   def create
 
-    @buyer_address = BuyerAddress.new(buyer_address_params)
+      @buyer_address = BuyerAddress.new(buyer_address_params)
       if @buyer_address.save
            render :template => 'shared/notification'
       else
