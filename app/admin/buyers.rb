@@ -5,7 +5,7 @@ ActiveAdmin.register Buyer do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :buyer_name, :phone_number, :is_active, :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :confirmation_token, :confirmed_at, :confirmation_sent_at
+  permit_params :buyer_name, :phone_number, :is_active, :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :confirmation_token, :confirmed_at, :confirmation_sent_at
   #
   # or
   #

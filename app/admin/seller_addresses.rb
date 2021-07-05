@@ -5,7 +5,7 @@ ActiveAdmin.register SellerAddress do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :seller_id, :street_name, :lat, :lon, :pincode_id
+   permit_params :seller_id, :street_name, :lat, :lon, :pincode_id
   #
   # or
   #

@@ -1,6 +1,8 @@
-<h1>Editing Buyer Address</h1>
 
-<%= render 'form', buyer_address: @buyer_address %>
+<%= render 'shared/header',obj:'Edit Address' %>
+<div class="container" style="margin-top:100px"><br>
+<%= render 'form', buyer_address: @buyer_address %><br>
+<%= link_to 'Show', @buyer_address %> 
+</div>
 
-<%= link_to 'Show', @buyer_address %> |
-<%= link_to 'Back', buyer_addresses_path %>
+

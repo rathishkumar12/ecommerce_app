@@ -5,7 +5,7 @@ ActiveAdmin.register Seller do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :seller_name, :seller_company_name, :phone_number, :is_active, :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at
+   permit_params :seller_name, :seller_company_name, :phone_number, :is_active, :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at
   #
   # or
   #
@@ -18,5 +18,5 @@ ActiveAdmin.register Seller do
   filter :seller_company_name, as: :select
   filter :phone_number, as: :select
   filter :email, as: :select
-  filter :is_active, as: :select
+  
 end

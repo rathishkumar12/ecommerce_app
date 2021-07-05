@@ -1,0 +1,61 @@
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="height:500px;">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="1000">
+      <div class="d-block w-100" style="height:500px;background-color:grey;" >
+        <center>
+        <% (0...@trendings[0].image.count).each do |image| %>
+       <%= image_tag(@trendings[0].image[image] , class: 'rounded border border-3' , style: 'height:250px;margin-top:100px;width:270px;margin-left:50px;margin-right:50px;')  %>
+       <%end%>
+       </center>
+          <div class="carousel-caption d-none d-md-block">
+        <h5 class="fw-bold">
+          <%= link_to @trendings[0].name.to_s.upcase , buyer_addresses_path(:product_id => @trendings[0].id,:seller_id=>@trendings[0].seller_id) ,class:'text-white' ,style:'text-decoration: none;'%></h5>
+        <h6 ><%=@trendings[0].description %></h6>
+      </div>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+        <div class="d-block w-100" style="height:500px;background-color:grey;" >
+        <center>
+        <% (0...@trendings[1].image.count).each do |image| %>
+       <%= image_tag(@trendings[1].image[image] , class: 'rounded border border-3' , style: 'height:250px;margin-top:100px;width:270px;margin-left:50px;margin-right:50px;')  %>
+       <%end%>
+       </center>
+          <div class="carousel-caption d-none d-md-block">
+         <h5 class="fw-bold">
+          <%= link_to @trendings[1].name.to_s.upcase  , buyer_addresses_path(:product_id => @trendings[1].id,:seller_id=>@trendings[1].seller_id) ,class:'text-white' ,style:'text-decoration: none;'%></h5>
+        <h6><%=@trendings[1].description %></h6>
+      </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+       <div class="d-block w-100" style="height:500px;background-color:grey;" >
+         <center>
+        <% (0...@trendings[2].image.count).each do |image| %>
+       <%= image_tag(@trendings[2].image[image] , class: 'rounded border border-3' , style: 'height:250px;margin-top:100px;width:270px;margin-left:50px;margin-right:50px;')  %>
+       <%end%>
+       </center>
+          <div class="carousel-caption d-none d-md-block">
+         <h5 class="fw-bold">
+          <%= link_to @trendings[2].name.to_s.upcase  , buyer_addresses_path(:product_id => @trendings[2].id,:seller_id=>@trendings[2].seller_id) ,class:'text-white' ,style:'text-decoration: none;'%></h5>
+        <h6 ><%=@trendings[2].description %></h6>
+      </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

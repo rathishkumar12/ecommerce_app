@@ -1,8 +1,10 @@
 
 
 <% if buyer_signed_in? %>
-<%= render 'home_page/navigation_bar' %>  
-<div class="container" style="margin-top:100px; margin-bottom: 100px;">
+<%= render 'home_page/navigation_bar' %> 
+<div class="container" style="margin-bottom: 100px;">
+   <%= render 'home_page/trending_items' %> 
+
 <%= render 'home_page/display_allproducts' ,obj: Product %>
 </div>
 <%= render 'home_page/footer' %>

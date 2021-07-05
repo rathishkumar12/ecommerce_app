@@ -1,5 +1,8 @@
 class HomePageController < ApplicationController
 
+	before_action :authenticate_buyer!, except: [:index, :home]
+	before_action :set_trending  
+
 	def index 
 
 	end	
@@ -22,4 +25,10 @@ class HomePageController < ApplicationController
 	    end
 
 	end
+
+	private 
+	def set_trending 
+		@trendings=Product.where('quantity>0 and is_active=true').order("created_at DESC").limit(3).includes(:category)
+		puts @trendings
+	end	
 end

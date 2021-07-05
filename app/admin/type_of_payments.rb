@@ -1,18 +1,18 @@
-ActiveAdmin.register Pincode do
+ActiveAdmin.register TypeOfPayment do
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :pincode, :city, :area
+   permit_params :name
   #
   # or
   #
   # permit_params do
-  #   permitted = [:pincode, :city, :area]
+  #   permitted = [:name]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  filter :pincode, as: :select
+  filter :name,as: :select
 end
