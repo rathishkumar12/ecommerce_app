@@ -12,5 +12,15 @@ class Seller < ApplicationRecord
 	CHECK_PASSWORD = /\A^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$\z/
 	
 	validates :email , format: { with:  CHECK_EMAIL}, uniqueness: true
-	validates :password , format: { with:  CHECK_PASSWORD}
+	#validates :password , format: { with:  CHECK_PASSWORD}
+
+
+	def active_for_authentication?
+  super && self.is_active
+  end
+
+   def inactive_message
+	 "Sorry, this account is not active."
+   end
+   
 end

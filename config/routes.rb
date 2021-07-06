@@ -34,5 +34,6 @@ Rails.application.routes.draw do
   get 'buyers/order' ,to: 'orders#index1'
   delete 'buyers/order' ,to: 'orders#destroy'
   put 'sellers/order', to: 'orders#confirm'
+  get 'sellers/:id/products' , to: 'products#export'
   resources :buyers 
 end

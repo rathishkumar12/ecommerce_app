@@ -21,6 +21,17 @@ class ProductsController < ApplicationController
   def edit
   end
 
+
+  def export
+
+  @product_for_export=Product.where('seller_id='+current_seller.id.to_s).includes(:category)
+  respond_to do |format|
+    format.html 
+    format.csv {send_data @product_for_export.to_csv}
+  end 
+
+  end
+
   # POST /products or /products.json
   def create
     @product = Product.new(product_params)

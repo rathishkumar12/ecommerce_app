@@ -1,7 +1,7 @@
 class BuyersController < ApplicationController
   before_action :set_buyer, only: %i[ show edit update destroy ]
  
-  before_action :authenticate_buyer!
+  before_action :authenticate_buyer! unless Rails.env.test?
 
   # GET /buyers or /buyers.json
   def index

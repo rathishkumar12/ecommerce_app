@@ -12,6 +12,7 @@
 <div class="container-fluid" style="margin-top:30px">
 <%= render 'sellers/nav_seller' %>
 <%= render 'sellers/seller_products' , obj:Product.where('seller_id='+current_seller.id.to_s).includes(:category)  %>
+
 <%= render 'home_page/footer' %>
 </div>
 <%else%>

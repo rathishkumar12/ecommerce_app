@@ -34,5 +34,5 @@
 </table>
 
 <br>
-
+<%= link_to 'Export as csv', 'sellers/'+current_seller.id.to_s+'/products.csv' %> /
 <%= link_to 'New Product', new_product_path(:seller_id =>params[:id]) %>
