@@ -24,14 +24,10 @@ class BuyerAddressesController < ApplicationController
 
   # POST /buyer_addresses or /buyer_addresses.json
   def create
-
-      @buyer_address = BuyerAddress.new(buyer_address_params)
-      if @buyer_address.save
-           render :template => 'shared/notification'
-      else
-        
-      end
-    
+    @buyer_address = BuyerAddress.new(buyer_address_params)
+    if @buyer_address.save
+         render :template => 'shared/notification'   
+    end
   end
 
   # PATCH/PUT /buyer_addresses/1 or /buyer_addresses/1.json
@@ -71,6 +67,7 @@ class BuyerAddressesController < ApplicationController
       res[:buyer_id]=current_buyer.id
       return set_pincode(res)
     end
+
     def set_pincode(res)
         if Pincode.find_by(pincode: res[:pincode]).nil?
           pincode=Pincode.new
@@ -84,4 +81,5 @@ class BuyerAddressesController < ApplicationController
          res.delete("pincode")
          return res
     end 
+    
 end

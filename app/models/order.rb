@@ -6,5 +6,4 @@ class Order < ApplicationRecord
 	belongs_to :buyer_address 
 	belongs_to :type_of_payment
 	validates :buyer_address_id , presence:true
-	
 end

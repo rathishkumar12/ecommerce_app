@@ -3,6 +3,8 @@ class Buyer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
+  devise :registerable, :confirmable
+  
   has_many :buyer_address
   has_many :order
   has_many :pincode , through: :buyer_address
@@ -11,26 +13,21 @@ class Buyer < ApplicationRecord
   foreign_key: :resource_owner_id,
            dependent: :delete_all # or :destroy if you need callbacks
 
-           has_many :access_tokens,
-           class_name: 'Doorkeeper::AccessToken',
-           foreign_key: :resource_owner_id,
-           dependent: :delete_all # or :destroy if you need callbacks
+ has_many :access_tokens,
+ class_name: 'Doorkeeper::AccessToken',
+ foreign_key: :resource_owner_id,
+ dependent: :delete_all # or :destroy if you need callbacks
 
 
-           CHECK_EMAIL =  /\A^(.+)@(.+)$\z/
-           CHECK_PASSWORD = /\A^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$\z/
-           validates :email , format: { with:  CHECK_EMAIL} , uniqueness: true
-	#validates :password , format: { with:  CHECK_PASSWORD}
-	devise :registerable, :confirmable
-	#validate :test
+  CHECK_EMAIL =  /\A^(.+)@(.+)$\z/
+  CHECK_PASSWORD = /\A^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$\z/
+
+  validates :email , format: { with:  CHECK_EMAIL} , uniqueness: true
+	
 
 	def self.authenticate(email, password)
 		buyer = Buyer.find_for_authentication(email: email)
 		buyer &.valid_password?(password) ? buyer : nil
-	end
-
-	def test 
-		puts "--------------------------------------------------#{self.errors.full_messages}"
 	end
 
 	def active_for_authentication?

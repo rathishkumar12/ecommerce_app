@@ -4,23 +4,18 @@ class OrdersController < ApplicationController
   
   # GET /orders or /orders.json
   def index
-
     @orders = Order.where('seller_id='+current_seller.id.to_s).includes(:buyer,:seller,:buyer_address,:type_of_payment,:order_item)
-
   end
 
   def index1
-    @orders = Order.where('buyer_id='+current_buyer.id.to_s)
+    @orders = Order.where('buyer_id='+current_buyer.id.to_s).includes(:buyer,:seller,:buyer_address,:type_of_payment,:order_item)
     render 'orders/index'
   end
 
   def confirm
-   
     Order.update(params[:id], status: "Confirmed by Seller")
-
     @orders = Order.where('seller_id='+current_seller.id.to_s)
     render 'orders/index'
-
   end  
 
   # GET /orders/1 or /orders/1.json
@@ -121,8 +116,8 @@ class OrdersController < ApplicationController
       res[:amount]=(Product.find($id_product).price*res[:quantity].to_i)+50
        else
       res[:amount]=(Product.find($id_product).price*res[:quantity].to_i)
-       end
-       $quantity=res[:quantity].to_i
+      end
+      $quantity=res[:quantity].to_i
       res.delete("quantity")
       res[:seller_id]=$id_seller
       return res

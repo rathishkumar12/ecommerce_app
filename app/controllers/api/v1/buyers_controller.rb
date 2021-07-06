@@ -50,7 +50,7 @@ module Api
         return res
       end  
       def current_buyer
-      @current_buyer ||= Buyer.find_by(id: doorkeeper_token[:resource_owner_id])
+      @current_buyer = Buyer.find_by(id: doorkeeper_token[:resource_owner_id])
       end
     end
   end
