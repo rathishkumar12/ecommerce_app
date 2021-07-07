@@ -22,10 +22,14 @@
     <% if buyer_signed_in?%>
     <h6 ><b>Sold by : </b><%= order.seller.seller_company_name%></h6>
     <h6 ><b>Status : </b><%= order.status%> </h6>
+   <h5 style="color: #9c0902;"><sup><span>&#8377</span></sup><%= order.amount %></h5>
+   <h6 class="text-secondary">Ordered <%= time_ago_in_words(order.created_at)%>ago...</h6>
     <%else%>
     <h6 ><b>Bought by : </b><%= order.buyer.buyer_name unless order.buyer.nil?%></h6>
     <h6 ><b>Status : </b><%= order.status%> </h6>
     <h5 style="color: #9c0902;"><sup><span>&#8377</span></sup><%= order.amount %></h5>
+     <h6 class="text-secondary">Ordered <%= time_ago_in_words(order.created_at)%> ago...</h6>
+
     <%if order.status.to_s=='Waiting for Seller Confirmation.'%>
     <h6 class='fw-bold'> <%= button_to 'confirm ' , sellers_order_path(id:order) ,class: "btn btn-outline-success" ,method: :put%></h6>
     <%end%>

@@ -34,8 +34,8 @@ class Buyer < ApplicationRecord
   super && self.is_active
   end
 
-   def inactive_message
-	 "Sorry, this account is not active."
-   end
+  def inactive_message
+	"Sorry, this account is not active."
+  end
 
 end

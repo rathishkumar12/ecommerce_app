@@ -5,5 +5,8 @@ FactoryBot.define do
 		phone_number {8667325496}
 		password {'rathish123'}
 		is_active {true}
+		after(:build)   { |u| u.skip_confirmation_notification! }
+        after(:create)  { |u| u.confirm }
 	end
+
 end

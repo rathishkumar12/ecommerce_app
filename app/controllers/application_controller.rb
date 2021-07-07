@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
 
 	def configure_permitted_parameters
 		devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit( :buyer_name , :email , :password, :phone_number,:seller_name,:seller_company_name )}
-		devise_parameter_sanitizer.permit(:account_update) { |u| u.permit( :hotelname , :email , :password , :current_password , :phno , :address, :firstname,:lastname )}
+		devise_parameter_sanitizer.permit(:account_update) { |u| u.permit( :buyer_name , :email , :password , :current_password , :phone_number , :name )}
 	end
 end

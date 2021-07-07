@@ -1,6 +1,6 @@
 class HomePageController < ApplicationController
 	
-	before_action :authenticate_buyer!, except: [:index, :home]
+	before_action :authenticate_buyer!, except: [:index, :home]  
 	before_action :set_trending  
 
 	def index 

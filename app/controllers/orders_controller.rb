@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
 
   
+
   # GET /orders or /orders.json
   def index
     @orders = Order.where('seller_id='+current_seller.id.to_s).includes(:buyer,:seller,:buyer_address,:type_of_payment,:order_item)
