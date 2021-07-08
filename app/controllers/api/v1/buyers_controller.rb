@@ -31,8 +31,10 @@ module Api
           render json: {errors:buyer.errors.full_messages}
         end
       end
-
-
+      def buyer_order 
+      
+        render json: {buyer_details:Buyer.find_by(email:params[:email]) ,orders: Buyer.find_by(email:params[:email]).order}
+      end
       def update
         buyer=Buyer.find(params[:id])
         buyer.update(buyer_name:params[:buyer_name])

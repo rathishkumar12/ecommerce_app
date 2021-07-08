@@ -70,7 +70,7 @@ class BuyersController < ApplicationController
       params.require(:buyer).permit(:buyer_name, :email, :phone_number, :password, :is_active)
     end
 
-     def current_buyer
+    def current_buyer
       @current_buyer ||= Buyer.find_by(id: doorkeeper_token[:resource_owner_id])
-      end
+    end
 end

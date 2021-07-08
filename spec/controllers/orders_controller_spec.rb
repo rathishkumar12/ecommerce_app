@@ -13,10 +13,7 @@ RSpec.describe "OrderController",type: :request do
 	end
 	context 'ORDER GET REQUESTS' do 
 
-		it 'redirects buyer to login page when trying to access ORDER page without login' do
-			get buyers_order_path
-			expect(response).to redirect_to new_buyer_session_path
-	    end
+		
 
 	    it 'renders ORDER page when buyer logged in' do
 	    	sign_in create(:buyer)

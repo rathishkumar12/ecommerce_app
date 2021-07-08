@@ -55,15 +55,15 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
 
-    @order_item =OrderItem.new 
-    puts  @order_item.id
+    order_item =OrderItem.new 
+    puts  order_item.id
     puts "check"
       if @order.save 
-         @order_item.order_id=@order.id
-         @order_item.product_id=$id_product
-         @order_item.quantity= $quantity
-         if @order_item.save
-          product=Product.find(@order_item.product_id)
+         order_item.order_id=@order.id
+         order_item.product_id=$id_product
+         order_item.quantity= $quantity
+         if order_item.save
+          product=Product.find(order_item.product_id)
           product.quantity-=$quantity
           if product.save
           redirect_to order_confirmation_path(:order_id =>@order.id )
