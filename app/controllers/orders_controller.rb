@@ -66,8 +66,10 @@ class OrdersController < ApplicationController
           product=Product.find(order_item.product_id)
           product.quantity-=$quantity
           if product.save
+          OrderMailer.with(order: @order).new_order_email.deliver_later
           redirect_to order_confirmation_path(:order_id =>@order.id )
           end
+         # puts" #{product.errors.full_messages} -------------"
          end
       end
     

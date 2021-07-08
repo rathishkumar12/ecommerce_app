@@ -9,6 +9,9 @@ ActiveAdmin.register Buyer do
   #
   # or
   #
+  action_item :deactivate_the_buyer,:only=>:show do 
+    #link_to 'Deactivate' ,
+  end
    permit_params do
      permitted = [:buyer_name, :phone_number, :is_active, :email, :encrypted_password, :reset_password_sent_at, :remember_created_at, :confirmed_at, :confirmation_sent_at]
      permitted << :other if params[:action] == 'create' && current_user.admin?

@@ -7,7 +7,7 @@ class Product < ApplicationRecord
 	validates :description , length: { minimum:6 }
 	validates :price , presence:true
 	validates :quantity , presence:true
-	validates :quantity , numericality: { greater_than: 0 }
+	
 
     # for generating csv of product records
 	def self.to_csv

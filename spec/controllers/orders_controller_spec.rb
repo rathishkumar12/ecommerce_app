@@ -4,7 +4,7 @@ RSpec.describe "OrderController",type: :request do
 
 	before do
 		@category=create(:category)
-		@buyer =create(:buyer,:email=>'rathish@gmail.com')
+		@buyer =create(:buyer,:email=>'rathishkumar.rkdo@gmail.com')
 		@seller=create(:seller)
 		@product=create(:product,:category_id=>@category.id,:seller_id=>@seller.id)
 	    @pincode=create(:pincode)
@@ -13,13 +13,18 @@ RSpec.describe "OrderController",type: :request do
 	end
 	context 'ORDER GET REQUESTS' do 
 
-		
-
-	    it 'renders ORDER page when buyer logged in' do
+	    it 'renders ORDER page when BUYER logged in' do
 	    	sign_in create(:buyer)
 			get buyers_order_path
 			expect(response).to render_template 'orders/index'
 	    end
+
+	    it 'renders ORDER page when SELLER logged in' do
+	    	sign_in @seller
+			get sellers_order_path
+			expect(response).to render_template 'orders/index'
+	    end
+
 	end	
 	context 'BOOKING ORDER' do 
 
@@ -37,10 +42,9 @@ RSpec.describe "OrderController",type: :request do
 
 	      it '#3 selecting quantity and type_of_payment for booking order' do 
 	      	sign_in create(:buyer)
-	      	@order=create(:order,:buyer_id=>@buyer.id,:seller_id=>@seller.id,:type_of_payment_id=>@type_of_payment.id,:buyer_address_id=>@buyer_address.id)
-	      	@order_item=create(:order_item,:order_id=>@order.id,:product_id=>@product.id)
-	      	#post orders_path(:status=>'Waiting',:type_of_payment_id=>@type_of_payment.id,:quantity=>3)
-
+	      	get new_order_path(product_id:@product.id,seller_id:@seller.id,address_id:@buyer_address.id)
+	      	post orders_path,:params => { :order=> {:status=>'Waiting',:type_of_payment_id=>@type_of_payment.id,:quantity=>3} }
+	      	expect(response.status).to  eq(302)
 	      end
 	end
 end	

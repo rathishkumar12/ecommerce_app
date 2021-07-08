@@ -24,10 +24,11 @@ $(function(){
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
  <!-- javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' -->
-
+  <div class="container">
   <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, class: "alert alert-info" %>
   <% end %>
+</div>
 </head>
 
 <body>
