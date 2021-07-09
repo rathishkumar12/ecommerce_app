@@ -31,7 +31,7 @@ class Buyer < ApplicationRecord
 	end
 
 	def active_for_authentication?
-  self.is_active
+   self.is_active
   end
 
   def inactive_message

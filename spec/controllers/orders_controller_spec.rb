@@ -47,4 +47,25 @@ RSpec.describe "OrderController",type: :request do
 	      	expect(response.status).to  eq(302)
 	      end
 	end
+	context 'Cancel And Confirm ORDER' do 
+		  before do 
+		  	@order=create(:order,:buyer_id=>@buyer.id,:seller_id=>@seller.id,:type_of_payment_id=>@type_of_payment.id,:buyer_address_id=>@buyer_address.id)
+	      	create(:order_item,:order_id=>@order.id,:product_id=>@product.id)
+		  end
+	      it '#Cancel order as seller' do 
+	      	sign_in @seller
+	      	delete buyers_order_path(id:@order.id)
+	      	expect(response).to render_template 'orders/index'
+	      end
+	       it '#Cancel order as buyer' do 
+	      	sign_in @buyer
+	      	delete buyers_order_path(id:@order.id)
+	      	expect(response).to render_template 'orders/index'
+	      end
+	      it '#Confirm order' do 
+	      	sign_in @seller
+	      	put sellers_order_path(id:@order.id)
+	      	expect(response).to render_template 'orders/index'
+	      end
+	end
 end	

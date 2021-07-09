@@ -10,14 +10,16 @@
       <hr>
     </p>
    <br>
-    <h2><b>Price        : </b><%= @order.order_item[0].product.price %></h2>
-    <h2><b>Quantity     : </b><%= @order.order_item[0].quantity %></h2>
-    <h2><b>Total Amount : </b><%= @order.amount %></h2>
-    <h2>Contact seller for more info : <%= @order.seller.email%></h2>
+    <h2 ><b>Price        : </b><%= @order.order_item[0].product.price %></h2>
+    <h2 ><b>Quantity     : </b><%= @order.order_item[0].quantity %></h2>
+    <h2 ><b>Total Amount : </b><%= @order.amount %></h2>
+    <h2 >Ordered Mistakenly ? <%= link_to 'Click here to cancel', 'http://127.0.0.1:3000//orders/'+@order.id.to_s  %></h2>
+    <h2 >Contact seller for more info : <%= @order.seller.email%></h2>
+
     <p>
     <hr>
     </p>
-    <center> <h2 style="color:grey;"><b>Thank you for using our Website @ECOM</b></h2></center>
+    <center> <h2 style="color:grey;"><b>Thank you for using our Website <%= link_to '@Ecom', 'http://127.0.0.1:3000/'  %></b></h2></center>
   </div>
   </center>
   </body>

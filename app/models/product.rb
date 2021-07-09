@@ -10,11 +10,13 @@ class Product < ApplicationRecord
 	
 
     # for generating csv of product records
+    
 	def self.to_csv
 		CSV.generate do |csv|
+			column_names = %w(Project_ID Product_Name Description Price Quantity Category Is_active Created_At )
 			csv << column_names
 			all.each do |product|
-				csv << product.attributes.values_at(*column_names)
+				csv << [product.id,product.name,product.description,product.price,product.quantity,product.category.category_name,product.is_active,product.created_at]
 			end 
 		end
 	end	

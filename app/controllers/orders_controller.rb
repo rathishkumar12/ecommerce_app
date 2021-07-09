@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+  class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
 
   
@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
   # GET /orders/1 or /orders/1.json
 
   def show
+
   end
 
   # GET /orders/new
@@ -56,8 +57,8 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     order_item =OrderItem.new 
-    puts  order_item.id
-    puts "check"
+    #puts  order_item.id
+   # puts "check"
       if @order.save 
          order_item.order_id=@order.id
          order_item.product_id=$id_product
@@ -96,9 +97,11 @@ class OrdersController < ApplicationController
       order.destroy
       if seller_signed_in?
       @orders = Order.where('seller_id='+current_seller.id.to_s)
+      
       render 'orders/index'
       else
       @orders = Order.where('buyer_id='+current_buyer.id.to_s)
+      
       render 'orders/index'
       end
   end

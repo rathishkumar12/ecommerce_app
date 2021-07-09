@@ -9,12 +9,25 @@ ActiveAdmin.register Buyer do
   #
   # or
   #
-  action_item :deactivate_the_buyer,:only=>:show do 
-    #link_to 'Deactivate' ,
+
+   action_item :deactivate , only: :show do
+    if buyer.is_active
+      link_to "Deactivate Account", deactivate_admin_buyer_path(buyer) , method: :put
+    else
+      link_to "Activate Account" ,deactivate_admin_buyer_path(buyer) , method: :put
+    end
   end
+
+  member_action :deactivate , method: :put do
+    buyer = Buyer.find_by(id: params[:id])
+    buyer.update(is_active: !buyer.is_active)
+    redirect_to admin_buyer_path(buyer)
+  end
+
+  
    permit_params do
      permitted = [:buyer_name, :phone_number, :is_active, :email, :encrypted_password, :reset_password_sent_at, :remember_created_at, :confirmed_at, :confirmation_sent_at]
-     permitted << :other if params[:action] == 'create' && current_user.admin?
+     permitted << :other if params[:action] == 'create' && current_buyer.admin?
      permitted
    end
   filter :buyer_name , as: :select

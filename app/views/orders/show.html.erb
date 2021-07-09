@@ -1,22 +1,26 @@
+
+<%= render 'shared/header' ,obj:'Order No : '+@order.id.to_s %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Buyer:</strong>
-  <%= @order.buyer_id %>
-</p>
+<div class="container card" style='text-align:left;'>
+  <div class="card-body">
+    <h3 class="text-center"><%=@order.order_item[0].product.name%></h3>
+    <div >
+     <% if @order.order_item[0].product.image.count>0 %>
+       <%(0...@order.order_item[0].product.image.count).each do |image|%>
+      <%= image_tag(@order.order_item[0].product.image[image] ,class: "card-img-top border", style:'height:300px;width:300px;margin:20px;')  %>
+      <%end%>
+      <%else%>
+      <%= image_tag('icon/noImage.jpg' , class:"card-img-top" , style:'height:500px;width:500px;margin:20px;')  %>
+      <%end%>
+    </div>
+      <h4><b>Product ID : </b><%= @order.order_item[0].product.id%></h4>
+      <h4><b>Quantity : </b><%= @order.order_item[0].quantity%></h4>
+      <h4><b>Sold by : </b><%= @order.seller.seller_company_name%></h4>
+      <h4><b>Status : </b><%= @order.status%></h4>
+      <h4 style="color: #9c0902;"><sup><span>&#8377</span></sup><%= @order.amount%></h4>
+      <%= button_to 'Cancel Order', buyers_order_path(id:@order.id) ,method: :delete, class:'btn btn-outline-danger' %> <br>
+     <%= button_to 'Home', root_path ,class:'btn btn-success'%>
+  </div>
+</div>
 
-<p>
-  <strong>Seller:</strong>
-  <%= @order.seller_id %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @order.status %>
-</p>
-<p>
-  <strong>AddressId:</strong>
-  <%= @order.buyer_address_id %>
-</p>
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
